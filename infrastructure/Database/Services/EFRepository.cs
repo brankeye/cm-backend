@@ -14,6 +14,8 @@ namespace cm.backend.infrastructure.Database.Services
         where TContext : DbContext, new()
         where TModel : class, IEntity
     {
+        public TContext Context { get; set; } = new TContext();
+
         public IQueryable<TModel> All()
         {
             var query = Context.Set<TModel>().AsQueryable();
@@ -149,7 +151,5 @@ namespace cm.backend.infrastructure.Database.Services
             Context.Dispose();
             GC.SuppressFinalize(this);
         }
-
-        public TContext Context { get; set; } = new TContext();
     }
 }
