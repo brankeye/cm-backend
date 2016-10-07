@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,9 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Context.cs" />
+    <Compile Include="Database\Data.cs" />
     <Compile Include="Enums\ResultCodes.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
-    <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\Club.cs" />
     <Compile Include="Objects\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -54,7 +54,6 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EFRepository.cs" />
-    <Compile Include="Services\SecuredEFRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\domain\Data\Data.csproj">
