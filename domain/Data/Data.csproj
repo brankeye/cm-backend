@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Context.cs" />
+    <Compile Include="Enums\ResultCodes.cs" />
+    <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Models\Test.cs" />
+    <Compile Include="Objects\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
