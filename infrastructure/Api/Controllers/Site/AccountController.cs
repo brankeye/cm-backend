@@ -16,7 +16,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 
-namespace cm.backend.infrastructure.Api.Controllers
+namespace cm.backend.infrastructure.Api.Controllers.Site
 {
     [Authorize]
     [RoutePrefix("api/Account")]

@@ -20,7 +20,7 @@ namespace cm.backend.infrastructure.Api.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MainConnection", throwIfV1Schema: false)
         {
         }
         

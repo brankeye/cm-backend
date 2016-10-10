@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace cm.backend.infrastructure.Api.Controllers
+namespace cm.backend.infrastructure.Api.Controllers.Site
 {
     public class HomeController : Controller
     {

@@ -14,7 +14,7 @@ namespace cm.backend.infrastructure.Api.Controllers.Base
         private readonly Repository<TModel> _repository = new Repository<TModel>();
         
         [HttpGet]
-        public Response Get()
+        public virtual Response Get()
         {
             var response = new Response
             {
@@ -24,14 +24,14 @@ namespace cm.backend.infrastructure.Api.Controllers.Base
         }
 
         [HttpGet]
-        public Response Get(int id)
+        public virtual Response Get(int id)
         {
             var response = Repository.FindById(id);
             return response;
         }
 
         [HttpPost]
-        public Response Post([FromBody] TModel item)
+        public virtual Response Post([FromBody] TModel item)
         {
             var response = new Response();
 
@@ -44,7 +44,7 @@ namespace cm.backend.infrastructure.Api.Controllers.Base
         }
 
         [HttpDelete]
-        public Response Delete(int id)
+        public virtual Response Delete(int id)
         {
             var response = Repository.Delete(id);
             return response;
