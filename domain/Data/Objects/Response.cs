@@ -6,12 +6,12 @@ namespace cm.backend.domain.Data.Objects
     {
         public Response()
         {
-            ResultCode = ResultCodes.Success;
+            ResultCode = ResultCode.Success;
             Message = "Success";
             Item = null;
         }
 
-        public ResultCodes ResultCode { get; set; }
+        public ResultCode ResultCode { get; set; }
 
         public string Message { get; set; }
 

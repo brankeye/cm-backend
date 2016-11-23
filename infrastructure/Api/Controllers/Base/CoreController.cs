@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 using cm.backend.domain.Data.Interfaces;
 using cm.backend.domain.Data.Objects;
 using cm.backend.infrastructure.Database.Content;
@@ -10,9 +8,8 @@ namespace cm.backend.infrastructure.Api.Controllers.Base
     public class CoreController<TModel> : ApiController
         where TModel : class, IEntity
     {
-        private Repository<TModel> Repository => _repository;
-        private readonly Repository<TModel> _repository = new Repository<TModel>();
-        
+        private Repository<TModel> Repository => new Repository<TModel>();
+
         [HttpGet]
         public virtual Response Get()
         {

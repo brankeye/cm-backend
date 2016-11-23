@@ -1,6 +1,6 @@
 ﻿namespace cm.backend.domain.Data.Enums
 {
-    public enum ResultCodes
+    public enum ResultCode
     {
         DeleteFailed,
         DeleteSuccessful,

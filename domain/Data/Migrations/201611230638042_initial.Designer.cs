@@ -7,13 +7,13 @@ namespace cm.backend.domain.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initialtest : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initialtest));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610072148578_initial-test"; }
+            get { return "201611230638042_initial"; }
         }
         
         string IMigrationMetadata.Source

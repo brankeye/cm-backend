@@ -52,14 +52,13 @@
   <ItemGroup>
     <Compile Include="Database\Context.cs" />
     <Compile Include="Database\Data.cs" />
-    <Compile Include="Enums\ResultCodes.cs" />
+    <Compile Include="Enums\ResultCode.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
-    <Compile Include="Migrations\201610072148578_initial-test.cs" />
-    <Compile Include="Migrations\201610072148578_initial-test.Designer.cs">
-      <DependentUpon>201610072148578_initial-test.cs</DependentUpon>
+    <Compile Include="Migrations\201611230638042_initial.cs" />
+    <Compile Include="Migrations\201611230638042_initial.Designer.cs">
+      <DependentUpon>201611230638042_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Club.cs" />
     <Compile Include="Objects\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,8 +67,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610072148578_initial-test.resx">
-      <DependentUpon>201610072148578_initial-test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611230638042_initial.resx">
+      <DependentUpon>201611230638042_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -43,12 +42,12 @@ namespace cm.backend.infrastructure.Database.Services
             if (query != null)
             {
                 response.Message = "Found";
-                response.ResultCode = ResultCodes.RecordFound;
+                response.ResultCode = ResultCode.RecordFound;
             }
             else
             {
-                response.ResultCode = ResultCodes.RecordNotFound;
-                response.Message = ResultCodes.RecordNotFound + ": could not find record matching id of " + id + ".";
+                response.ResultCode = ResultCode.RecordNotFound;
+                response.Message = ResultCode.RecordNotFound + ": could not find record matching id of " + id + ".";
             }
 
             response.Item = query;
@@ -71,24 +70,24 @@ namespace cm.backend.infrastructure.Database.Services
             }
 
             var saveResponse = Save();
-            if (saveResponse.ResultCode == ResultCodes.SaveSuccessful)
+            if (saveResponse.ResultCode == ResultCode.SaveSuccessful)
             {
                 if (isAdding)
                 {
-                    response.Message = ResultCodes.InsertSuccessful.ToString();
-                    response.ResultCode = ResultCodes.InsertSuccessful;
+                    response.Message = ResultCode.InsertSuccessful.ToString();
+                    response.ResultCode = ResultCode.InsertSuccessful;
                 }
                 else
                 {
-                    response.Message = ResultCodes.UpdateSuccessful.ToString();
-                    response.ResultCode = ResultCodes.UpdateSuccessful;
+                    response.Message = ResultCode.UpdateSuccessful.ToString();
+                    response.ResultCode = ResultCode.UpdateSuccessful;
                 }
 
                 response.Item = Context.Entry(item);
             }
             else
             {
-                response.Message = ResultCodes.SaveFailed.ToString() + ": " + saveResponse.Message;
+                response.Message = ResultCode.SaveFailed.ToString() + ": " + saveResponse.Message;
                 response.ResultCode = saveResponse.ResultCode;
                 response.Item = saveResponse.Item;
             }
@@ -117,8 +116,8 @@ namespace cm.backend.infrastructure.Database.Services
             }
             else
             {
-                response.ResultCode = ResultCodes.RecordNotFound;
-                response.Message = ResultCodes.RecordNotFound + ": could not find record matching id of " + id + ".";
+                response.ResultCode = ResultCode.RecordNotFound;
+                response.Message = ResultCode.RecordNotFound + ": could not find record matching id of " + id + ".";
             }
             
             return response;
@@ -128,7 +127,7 @@ namespace cm.backend.infrastructure.Database.Services
         {
             var result = new Response
             {
-                ResultCode = ResultCodes.SaveSuccessful
+                ResultCode = ResultCode.SaveSuccessful
             };
 
             try
@@ -138,7 +137,7 @@ namespace cm.backend.infrastructure.Database.Services
             }
             catch (Exception ex)
             {
-                result.ResultCode = ResultCodes.SaveFailed;
+                result.ResultCode = ResultCode.SaveFailed;
                 result.Message = ex.Message;
                 result.Item = ex;
             }
