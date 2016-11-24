@@ -12,7 +12,7 @@ namespace cm.backend.infrastructure.Database.Interfaces
 
         IQueryable<TModel> AllIncluding(params Expression<Func<TModel, object>>[] includeProperties);
 
-        IQueryable<TModel> Find(Expression<Func<TModel, bool>> predicate);
+        Response Find(Expression<Func<TModel, bool>> predicate);
 
         Response FindById(int id);
 

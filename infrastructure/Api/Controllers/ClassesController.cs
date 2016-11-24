@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Http;
 using cm.backend.domain.Data.Database;
 using cm.backend.domain.Data.Enums;
 using cm.backend.domain.Data.Objects;
@@ -6,6 +7,7 @@ using cm.backend.infrastructure.Api.Controllers.Base;
 
 namespace cm.backend.infrastructure.Api.Controllers
 {
+    [Authorize]
     public class ClassesController : CoreController<Data.Class>
     {
         public override Response Post(Data.Class item)
@@ -14,6 +16,8 @@ namespace cm.backend.infrastructure.Api.Controllers
             var endTime = item.EndTime;
             item.StartTime = new DateTime(1, 1, 1, startTime.Hour, startTime.Minute, startTime.Second, DateTimeKind.Utc);
             item.EndTime = new DateTime(1, 1, 1, endTime.Hour, endTime.Minute, endTime.Second, DateTimeKind.Utc);
+
+            item.School = null;
 
             var day = item.Day;
             if (day == "Monday" || day == "Tuesday" || day == "Wednesday" || day == "Thursday" ||

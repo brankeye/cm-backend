@@ -28,8 +28,8 @@ namespace cm.backend.domain.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        Day = c.String(nullable: false),
+                        Name = c.String(),
+                        Day = c.String(),
                         StartTime = c.DateTime(nullable: false),
                         EndTime = c.DateTime(nullable: false),
                         SchoolId = c.Int(nullable: false),
@@ -43,11 +43,11 @@ namespace cm.backend.domain.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        Address = c.String(nullable: false),
-                        Email = c.String(nullable: false),
-                        Website = c.String(nullable: false),
-                        PhoneNumber = c.String(nullable: false),
+                        Name = c.String(),
+                        Address = c.String(),
+                        Email = c.String(),
+                        Website = c.String(),
+                        PhoneNumber = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -56,12 +56,12 @@ namespace cm.backend.domain.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(nullable: false),
-                        LastName = c.String(nullable: false),
-                        Email = c.String(nullable: false),
-                        PhoneNumber = c.String(nullable: false),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Email = c.String(),
+                        PhoneNumber = c.String(),
                         StartDate = c.DateTime(nullable: false),
-                        Level = c.String(nullable: false),
+                        Level = c.String(),
                         IsTeacher = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -83,7 +83,7 @@ namespace cm.backend.domain.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
+                        Name = c.String(),
                         Date = c.DateTime(nullable: false),
                         Time = c.DateTime(nullable: false),
                         ProfileId = c.Int(nullable: false),
@@ -97,8 +97,8 @@ namespace cm.backend.domain.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        Body = c.String(nullable: false),
+                        Name = c.String(),
+                        Body = c.String(),
                         Score = c.Single(nullable: false),
                         EvaluationId = c.Int(nullable: false),
                     })
@@ -125,7 +125,7 @@ namespace cm.backend.domain.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Username = c.String(nullable: false),
+                        Username = c.String(),
                         ProfileId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

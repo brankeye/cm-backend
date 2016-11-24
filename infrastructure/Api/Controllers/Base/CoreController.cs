@@ -8,7 +8,7 @@ namespace cm.backend.infrastructure.Api.Controllers.Base
     public class CoreController<TModel> : ApiController
         where TModel : class, IEntity
     {
-        private Repository<TModel> Repository => new Repository<TModel>();
+        protected Repository<TModel> Repository => new Repository<TModel>();
 
         [HttpGet]
         public virtual Response Get()

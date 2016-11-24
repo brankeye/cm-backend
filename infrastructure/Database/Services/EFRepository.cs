@@ -28,10 +28,23 @@ namespace cm.backend.infrastructure.Database.Services
             return query;
         }
 
-        public IQueryable<TModel> Find(Expression<Func<TModel, bool>> predicate)
+        public Response Find(Expression<Func<TModel, bool>> predicate)
         {
-            var query = Context.Set<TModel>().Where(predicate);
-            return query;
+            var response = new Response();
+            var query = Context.Set<TModel>().FirstOrDefault(predicate);
+            if (query != null)
+            {
+                response.Message = "Found";
+                response.ResultCode = ResultCode.RecordFound;
+            }
+            else
+            {
+                response.ResultCode = ResultCode.RecordNotFound;
+                response.Message = ResultCode.RecordNotFound + ": could not find record matching predicate of " + predicate.Name + ".";
+            }
+
+            response.Item = query;
+            return response;
         }
 
         public Response FindById(int id)
@@ -83,7 +96,7 @@ namespace cm.backend.infrastructure.Database.Services
                     response.ResultCode = ResultCode.UpdateSuccessful;
                 }
 
-                response.Item = Context.Entry(item);
+                response.Item = Context.Entry(item).Entity;
             }
             else
             {
