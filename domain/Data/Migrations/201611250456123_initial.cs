@@ -62,7 +62,6 @@ namespace cm.backend.domain.Data.Migrations
                         PhoneNumber = c.String(),
                         StartDate = c.DateTime(nullable: false),
                         Level = c.String(),
-                        IsTeacher = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -113,6 +112,7 @@ namespace cm.backend.domain.Data.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         ProfileId = c.Int(nullable: false),
                         SchoolId = c.Int(nullable: false),
+                        IsTeacher = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Profiles", t => t.ProfileId)

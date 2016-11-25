@@ -171,9 +171,6 @@ namespace cm.backend.domain.Data.Database
             
             [DataMember]
             public string Level { get; set; }
-            
-            [DataMember]
-            public bool IsTeacher { get; set; }
         }
 
         [DataContract]
@@ -196,6 +193,9 @@ namespace cm.backend.domain.Data.Database
             [ForeignKey(nameof(SchoolId))]
             [DataMember]
             public School School { get; set; }
+
+            [DataMember]
+            public bool IsTeacher { get; set; }
         }
 
         [DataContract]
