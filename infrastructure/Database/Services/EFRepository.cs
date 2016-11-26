@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Linq.Expressions;
 using cm.backend.domain.Data.Enums;
@@ -148,10 +150,22 @@ namespace cm.backend.infrastructure.Database.Services
                 var response = Context.SaveChanges();
                 result.Item = response;
             }
+            catch (DbUpdateException ex)
+            {
+                result.ResultCode = ResultCode.SaveFailed;
+                result.Message = "Message: " + ex.Message + "\n" + "Stacktrace: " + ex.StackTrace;
+                result.Item = ex;
+            }
+            catch (DbEntityValidationException ex)
+            {
+                result.ResultCode = ResultCode.SaveFailed;
+                result.Message = "Message: " + ex.Message + "\n" + "Stacktrace: " + ex.StackTrace;
+                result.Item = ex;
+            }
             catch (Exception ex)
             {
                 result.ResultCode = ResultCode.SaveFailed;
-                result.Message = ex.Message;
+                result.Message = "Message: " + ex.Message + "\n" + "Stacktrace: " + ex.StackTrace;
                 result.Item = ex;
             }
 

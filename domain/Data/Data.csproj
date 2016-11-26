@@ -54,9 +54,9 @@
     <Compile Include="Database\Data.cs" />
     <Compile Include="Enums\ResultCode.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
-    <Compile Include="Migrations\201611250456123_initial.cs" />
-    <Compile Include="Migrations\201611250456123_initial.Designer.cs">
-      <DependentUpon>201611250456123_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201611260717194_initial.cs" />
+    <Compile Include="Migrations\201611260717194_initial.Designer.cs">
+      <DependentUpon>201611260717194_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Objects\Response.cs" />
@@ -67,8 +67,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611250456123_initial.resx">
-      <DependentUpon>201611250456123_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611260717194_initial.resx">
+      <DependentUpon>201611260717194_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

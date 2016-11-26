@@ -13,7 +13,7 @@ namespace cm.backend.domain.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611250456123_initial"; }
+            get { return "201611260717194_initial"; }
         }
         
         string IMigrationMetadata.Source

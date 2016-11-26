@@ -33,7 +33,7 @@ namespace cm.backend.infrastructure.Api.Controllers
             item.Date = item.Date.Date;
 
             var time = item.Time;
-            item.Time = new DateTime(1, 1, 1, time.Hour, time.Minute, time.Second, DateTimeKind.Utc);
+            item.Time = new DateTimeOffset(1, 1, 1, time.Hour, time.Minute, time.Second, TimeSpan.Zero);
 
             item.Profile = null;
 

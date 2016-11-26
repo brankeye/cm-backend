@@ -37,7 +37,7 @@ namespace cm.backend.domain.Data.Database
             public bool IsAttending { get; set; }
             
             [DataMember]
-            public DateTime Date { get; set; }
+            public DateTimeOffset Date { get; set; }
             
             [DataMember]
             public int ClassId { get; set; }
@@ -62,7 +62,7 @@ namespace cm.backend.domain.Data.Database
             public int Id { get; set; }
             
             [DataMember]
-            public DateTime Date { get; set; }
+            public DateTimeOffset Date { get; set; }
             
             [DataMember]
             public int ClassId { get; set; }
@@ -86,10 +86,10 @@ namespace cm.backend.domain.Data.Database
             public string Day { get; set; }
             
             [DataMember]
-            public DateTime StartTime { get; set; }
+            public DateTimeOffset StartTime { get; set; }
             
             [DataMember]
-            public DateTime EndTime { get; set; }
+            public DateTimeOffset EndTime { get; set; }
             
             [DataMember]
             public int SchoolId { get; set; }
@@ -110,10 +110,10 @@ namespace cm.backend.domain.Data.Database
             public string Name { get; set; }
             
             [DataMember]
-            public DateTime Date { get; set; }
+            public DateTimeOffset Date { get; set; }
             
             [DataMember]
-            public DateTime Time { get; set; }
+            public DateTimeOffset Time { get; set; }
             
             [DataMember]
             public int ProfileId { get; set; }
@@ -167,7 +167,7 @@ namespace cm.backend.domain.Data.Database
             public string PhoneNumber { get; set; }
             
             [DataMember]
-            public DateTime StartDate { get; set; }
+            public DateTimeOffset StartDate { get; set; }
             
             [DataMember]
             public string Level { get; set; }

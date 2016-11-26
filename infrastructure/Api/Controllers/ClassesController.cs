@@ -14,8 +14,8 @@ namespace cm.backend.infrastructure.Api.Controllers
         {
             var startTime = item.StartTime;
             var endTime = item.EndTime;
-            item.StartTime = new DateTime(1, 1, 1, startTime.Hour, startTime.Minute, startTime.Second, DateTimeKind.Utc);
-            item.EndTime = new DateTime(1, 1, 1, endTime.Hour, endTime.Minute, endTime.Second, DateTimeKind.Utc);
+            item.StartTime = new DateTimeOffset(1, 1, 1, startTime.Hour, startTime.Minute, startTime.Second, TimeSpan.Zero);
+            item.EndTime = new DateTimeOffset(1, 1, 1, endTime.Hour, endTime.Minute, endTime.Second, TimeSpan.Zero);
 
             item.School = null;
 

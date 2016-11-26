@@ -13,7 +13,7 @@ namespace cm.backend.domain.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         IsAttending = c.Boolean(nullable: false),
-                        Date = c.DateTime(nullable: false),
+                        Date = c.DateTimeOffset(nullable: false, precision: 7),
                         ClassId = c.Int(nullable: false),
                         ProfileId = c.Int(nullable: false),
                     })
@@ -30,8 +30,8 @@ namespace cm.backend.domain.Data.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Day = c.String(),
-                        StartTime = c.DateTime(nullable: false),
-                        EndTime = c.DateTime(nullable: false),
+                        StartTime = c.DateTimeOffset(nullable: false, precision: 7),
+                        EndTime = c.DateTimeOffset(nullable: false, precision: 7),
                         SchoolId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -60,7 +60,7 @@ namespace cm.backend.domain.Data.Migrations
                         LastName = c.String(),
                         Email = c.String(),
                         PhoneNumber = c.String(),
-                        StartDate = c.DateTime(nullable: false),
+                        StartDate = c.DateTimeOffset(nullable: false, precision: 7),
                         Level = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -70,7 +70,7 @@ namespace cm.backend.domain.Data.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Date = c.DateTime(nullable: false),
+                        Date = c.DateTimeOffset(nullable: false, precision: 7),
                         ClassId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -83,8 +83,8 @@ namespace cm.backend.domain.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        Date = c.DateTime(nullable: false),
-                        Time = c.DateTime(nullable: false),
+                        Date = c.DateTimeOffset(nullable: false, precision: 7),
+                        Time = c.DateTimeOffset(nullable: false, precision: 7),
                         ProfileId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
