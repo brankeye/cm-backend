@@ -116,11 +116,11 @@ namespace cm.backend.domain.Data.Database
             public DateTimeOffset Time { get; set; }
             
             [DataMember]
-            public int ProfileId { get; set; }
+            public int MemberId { get; set; }
 
-            [ForeignKey(nameof(ProfileId))]
+            [ForeignKey(nameof(MemberId))]
             [DataMember]
-            public Profile Profile { get; set; }
+            public Member Member { get; set; }
         }
 
         [DataContract]

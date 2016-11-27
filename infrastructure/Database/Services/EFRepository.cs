@@ -13,7 +13,7 @@ namespace cm.backend.infrastructure.Database.Services
 {
     public abstract class EFRepository<TContext, TModel> : IRepository<TModel>
         where TContext : DbContext, new()
-        where TModel : class, IEntity
+        where TModel : class
     {
         public TContext Context { get; set; } = new TContext();
 
@@ -74,7 +74,9 @@ namespace cm.backend.infrastructure.Database.Services
             var response = new Response();
             var isAdding = true;
 
-            if (item.Id > 0)
+            var entity = (IEntity) item;
+
+            if (entity.Id > 0)
             {
                 Context.Entry(item).State = EntityState.Modified;
                 isAdding = false;

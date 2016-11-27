@@ -10,7 +10,7 @@ namespace cm.backend.infrastructure.Api.Controllers
     {
         public override Response Post(Data.Profile item)
         {
-            item.StartDate = item.StartDate.Date;
+            item.StartDate = item.StartDate.UtcDateTime.Date;
             return base.Post(item);
         }
     }

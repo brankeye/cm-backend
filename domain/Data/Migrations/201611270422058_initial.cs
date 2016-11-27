@@ -1,6 +1,5 @@
 namespace cm.backend.domain.Data.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
     
     public partial class initial : DbMigration
@@ -85,25 +84,11 @@ namespace cm.backend.domain.Data.Migrations
                         Name = c.String(),
                         Date = c.DateTimeOffset(nullable: false, precision: 7),
                         Time = c.DateTimeOffset(nullable: false, precision: 7),
-                        ProfileId = c.Int(nullable: false),
+                        MemberId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Profiles", t => t.ProfileId)
-                .Index(t => t.ProfileId);
-            
-            CreateTable(
-                "dbo.EvaluationSections",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Body = c.String(),
-                        Score = c.Single(nullable: false),
-                        EvaluationId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Evaluations", t => t.EvaluationId)
-                .Index(t => t.EvaluationId);
+                .ForeignKey("dbo.Members", t => t.MemberId)
+                .Index(t => t.MemberId);
             
             CreateTable(
                 "dbo.Members",
@@ -119,6 +104,20 @@ namespace cm.backend.domain.Data.Migrations
                 .ForeignKey("dbo.Schools", t => t.SchoolId)
                 .Index(t => t.ProfileId)
                 .Index(t => t.SchoolId);
+            
+            CreateTable(
+                "dbo.EvaluationSections",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Body = c.String(),
+                        Score = c.Single(nullable: false),
+                        EvaluationId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Evaluations", t => t.EvaluationId)
+                .Index(t => t.EvaluationId);
             
             CreateTable(
                 "dbo.Users",
@@ -137,26 +136,26 @@ namespace cm.backend.domain.Data.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Users", "ProfileId", "dbo.Profiles");
+            DropForeignKey("dbo.EvaluationSections", "EvaluationId", "dbo.Evaluations");
+            DropForeignKey("dbo.Evaluations", "MemberId", "dbo.Members");
             DropForeignKey("dbo.Members", "SchoolId", "dbo.Schools");
             DropForeignKey("dbo.Members", "ProfileId", "dbo.Profiles");
-            DropForeignKey("dbo.EvaluationSections", "EvaluationId", "dbo.Evaluations");
-            DropForeignKey("dbo.Evaluations", "ProfileId", "dbo.Profiles");
             DropForeignKey("dbo.CanceledClasses", "ClassId", "dbo.Classes");
             DropForeignKey("dbo.AttendanceRecords", "ProfileId", "dbo.Profiles");
             DropForeignKey("dbo.AttendanceRecords", "ClassId", "dbo.Classes");
             DropForeignKey("dbo.Classes", "SchoolId", "dbo.Schools");
             DropIndex("dbo.Users", new[] { "ProfileId" });
+            DropIndex("dbo.EvaluationSections", new[] { "EvaluationId" });
             DropIndex("dbo.Members", new[] { "SchoolId" });
             DropIndex("dbo.Members", new[] { "ProfileId" });
-            DropIndex("dbo.EvaluationSections", new[] { "EvaluationId" });
-            DropIndex("dbo.Evaluations", new[] { "ProfileId" });
+            DropIndex("dbo.Evaluations", new[] { "MemberId" });
             DropIndex("dbo.CanceledClasses", new[] { "ClassId" });
             DropIndex("dbo.Classes", new[] { "SchoolId" });
             DropIndex("dbo.AttendanceRecords", new[] { "ProfileId" });
             DropIndex("dbo.AttendanceRecords", new[] { "ClassId" });
             DropTable("dbo.Users");
-            DropTable("dbo.Members");
             DropTable("dbo.EvaluationSections");
+            DropTable("dbo.Members");
             DropTable("dbo.Evaluations");
             DropTable("dbo.CanceledClasses");
             DropTable("dbo.Profiles");

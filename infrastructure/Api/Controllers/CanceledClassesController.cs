@@ -10,7 +10,7 @@ namespace cm.backend.infrastructure.Api.Controllers
     {
         public override Response Post(Data.CanceledClass item)
         {
-            item.Date = item.Date.Date;
+            item.Date = item.Date.UtcDateTime.Date;
             item.Class = null;
             return base.Post(item);
         }
