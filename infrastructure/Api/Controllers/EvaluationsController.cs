@@ -14,12 +14,7 @@ namespace cm.backend.infrastructure.Api.Controllers
     {
         public override Response Get()
         {
-            var username = RequestContext.Principal.Identity.GetUserName();
-            var usersRepository = new Repository<Data.User>();
-            var currentUser = usersRepository.FindItem(x => x.Username == username);
-
-            var membersRepository = new Repository<Data.Member>();
-            var currentMember = membersRepository.FindItem(x => x.ProfileId == currentUser.ProfileId);
+            var currentMember = GetCurrentMember();
 
             var evaluationsRepository = new Repository<Data.Evaluation>();
             var response = new Response();

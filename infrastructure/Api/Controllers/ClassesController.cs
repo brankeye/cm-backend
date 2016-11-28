@@ -1,15 +1,30 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Http;
 using cm.backend.domain.Data.Database;
 using cm.backend.domain.Data.Enums;
 using cm.backend.domain.Data.Objects;
 using cm.backend.infrastructure.Api.Controllers.Base;
+using cm.backend.infrastructure.Database.Content;
 
 namespace cm.backend.infrastructure.Api.Controllers
 {
     [Authorize]
     public class ClassesController : CoreController<Data.Class>
     {
+        public override Response Get()
+        {
+            var canceledClassesRepository = new Repository<Data.Class>();
+            var currentSchool = GetCurrentSchool();
+            var schoolId = currentSchool.Id;
+            var response = new Response
+            {
+                Item = canceledClassesRepository.All().Where(x => x.SchoolId == schoolId)
+            };
+
+            return response;
+        }
+
         public override Response Post(Data.Class item)
         {
             var startTime = item.StartTime;
