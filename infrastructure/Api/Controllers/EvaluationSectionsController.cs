@@ -19,14 +19,12 @@ namespace cm.backend.infrastructure.Api.Controllers
             if (currentMember.IsTeacher)
             {
                 // get all evaluations for the school
-                var schoolId = currentMember.School.Id;
-                response.Item = evaluationSectionsRepository.All().Where(x => x.Evaluation.Member.SchoolId == schoolId);
+                response.Item = evaluationSectionsRepository.All().Where(x => x.Evaluation.Member.SchoolId == currentMember.School.Id);
             }
             else
             {
                 // get all evaluations for only this user
-                var memberId = currentMember.Id;
-                response.Item = evaluationSectionsRepository.All().Where(x => x.Evaluation.MemberId == memberId);
+                response.Item = evaluationSectionsRepository.All().Where(x => x.Evaluation.MemberId == currentMember.Id);
             }
 
             return response;

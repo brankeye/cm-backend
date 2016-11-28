@@ -22,14 +22,17 @@ namespace cm.backend.infrastructure.Api.Controllers.Base
         {
             var membersRepository = new Repository<Data.Member>();
             var currentUser = GetCurrentUser();
-            var currentMember = membersRepository.FindItem(x => x.ProfileId == currentUser.ProfileId);
+            var profileId = currentUser.ProfileId;
+            var currentMember = membersRepository.FindItem(x => x.ProfileId == profileId);
             return currentMember;
         }
 
         protected virtual Data.School GetCurrentSchool()
         {
             var currentMember = GetCurrentMember();
-            return currentMember.School;
+            var schoolsRepository = new Repository<Data.School>();
+            var currentSchool = schoolsRepository.FindItem(x => x.Id == currentMember.SchoolId);
+            return currentSchool;
         }
 
         [HttpGet]

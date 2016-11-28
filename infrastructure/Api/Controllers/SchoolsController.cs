@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
 using cm.backend.domain.Data.Database;
 using cm.backend.domain.Data.Objects;
 using cm.backend.infrastructure.Api.Controllers.Base;
@@ -12,9 +13,10 @@ namespace cm.backend.infrastructure.Api.Controllers
         public override Response Get()
         {
             var currentSchool = GetCurrentSchool();
+            var schoolsRepository = new Repository<Data.School>();
             var response = new Response()
             {
-                Item = currentSchool
+                Item = schoolsRepository.All().Where(x => x.Id == currentSchool.Id)
             };
             return response;
         }

@@ -14,10 +14,9 @@ namespace cm.backend.infrastructure.Api.Controllers
         {
             var canceledClassesRepository = new Repository<Data.CanceledClass>();
             var currentSchool = GetCurrentSchool();
-            var schoolId = currentSchool.Id;
             var response = new Response
             {
-                Item = canceledClassesRepository.All().Where(x => x.Class.SchoolId == schoolId)
+                Item = canceledClassesRepository.All().Where(x => x.Class.SchoolId == currentSchool.Id)
             };
 
             return response;

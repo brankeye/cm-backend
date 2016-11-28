@@ -14,12 +14,11 @@ namespace cm.backend.infrastructure.Api.Controllers
     {
         public override Response Get()
         {
-            var canceledClassesRepository = new Repository<Data.Class>();
+            var classesRepository = new Repository<Data.Class>();
             var currentSchool = GetCurrentSchool();
-            var schoolId = currentSchool.Id;
             var response = new Response
             {
-                Item = canceledClassesRepository.All().Where(x => x.SchoolId == schoolId)
+                Item = classesRepository.All().Where(x => x.SchoolId == currentSchool.Id)
             };
 
             return response;

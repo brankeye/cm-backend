@@ -14,10 +14,9 @@ namespace cm.backend.infrastructure.Api.Controllers
         {
             var membersRepository = new Repository<Data.Member>();
             var currentSchool = GetCurrentSchool();
-            var schoolId = currentSchool.Id;
             var response = new Response
             {
-                Item = membersRepository.All().Where(x => x.SchoolId == schoolId)
+                Item = membersRepository.All().Where(x => x.SchoolId == currentSchool.Id)
             };
 
             return response;

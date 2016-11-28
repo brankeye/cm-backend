@@ -14,10 +14,9 @@ namespace cm.backend.infrastructure.Api.Controllers
         {
             var attendanceRecordsRepository = new Repository<Data.AttendanceRecord>();
             var currentSchool = GetCurrentSchool();
-            var schoolId = currentSchool.Id;
             var response = new Response
             {
-                Item = attendanceRecordsRepository.All().Where(x => x.Class.SchoolId == schoolId)
+                Item = attendanceRecordsRepository.All().Where(x => x.Class.SchoolId == currentSchool.Id)
             };
 
             return response;
