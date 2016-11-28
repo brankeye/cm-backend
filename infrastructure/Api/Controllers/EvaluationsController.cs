@@ -1,28 +1,43 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Http;
 using cm.backend.domain.Data.Database;
 using cm.backend.domain.Data.Objects;
 using cm.backend.infrastructure.Api.Controllers.Base;
+using cm.backend.infrastructure.Database.Content;
+using Microsoft.AspNet.Identity;
 
 namespace cm.backend.infrastructure.Api.Controllers
 {
     [Authorize]
     public class EvaluationsController : CoreController<Data.Evaluation>
     {
-        /*
         public override Response Get()
         {
             var username = RequestContext.Principal.Identity.GetUserName();
-            var users = new Repository<Data.User>();
-            var currentUser = users.Find(x => x.Username == username).Item;
-            var user = (Data.User) currentUser;
-            var response = new Response
+            var usersRepository = new Repository<Data.User>();
+            var currentUser = usersRepository.FindItem(x => x.Username == username);
+
+            var membersRepository = new Repository<Data.Member>();
+            var currentMember = membersRepository.FindItem(x => x.ProfileId == currentUser.ProfileId);
+
+            var evaluationsRepository = new Repository<Data.Evaluation>();
+            var response = new Response();
+            if (currentMember.IsTeacher)
             {
-                Item = Repository.All().FirstOrDefault(x => x.ProfileId == user.ProfileId)
-            };
+                // get all evaluations for the school
+                var schoolId = currentMember.School.Id;
+                response.Item = evaluationsRepository.All().Where(x => x.Member.SchoolId == schoolId);
+            }
+            else
+            {
+                // get all evaluations for only this user
+                var memberId = currentMember.Id;
+                response.Item = evaluationsRepository.All().Where(x => x.MemberId == memberId);
+            }
+
             return response;
         }
-        */
 
         public override Response Post(Data.Evaluation item)
         {

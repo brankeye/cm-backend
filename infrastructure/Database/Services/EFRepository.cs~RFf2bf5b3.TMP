@@ -33,7 +33,7 @@ namespace cm.backend.infrastructure.Database.Services
         public Response Find(Expression<Func<TModel, bool>> predicate)
         {
             var response = new Response();
-            var query = FindItem(predicate);
+            var query = Context.Set<TModel>().FirstOrDefault(predicate);
             if (query != null)
             {
                 response.Message = "Found";
@@ -47,12 +47,6 @@ namespace cm.backend.infrastructure.Database.Services
 
             response.Item = query;
             return response;
-        }
-
-        public TModel FindItem(Expression<Func<TModel, bool>> predicate)
-        {
-            var query = Context.Set<TModel>().FirstOrDefault(predicate);
-            return query;
         }
 
         public Response FindById(int id)
