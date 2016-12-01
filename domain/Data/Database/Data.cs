@@ -63,7 +63,10 @@ namespace cm.backend.domain.Data.Database
             
             [DataMember]
             public DateTimeOffset Date { get; set; }
-            
+
+            [DataMember]
+            public bool IsCanceled { get; set; }
+
             [DataMember]
             public int ClassId { get; set; }
             

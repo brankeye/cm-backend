@@ -1,5 +1,6 @@
 namespace cm.backend.domain.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     
     public partial class initial : DbMigration
@@ -70,6 +71,7 @@ namespace cm.backend.domain.Data.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Date = c.DateTimeOffset(nullable: false, precision: 7),
+                        IsCanceled = c.Boolean(nullable: false),
                         ClassId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
